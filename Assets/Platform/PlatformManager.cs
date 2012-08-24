@@ -8,6 +8,8 @@ public class PlatformManager : MonoBehaviour {
 	public float recycleOffset;
 	public Vector3 minSize, maxSize, minGap, maxGap;
 	public float minY, maxY;
+	public Material[] materials;
+	public PhysicMaterial[] physicMaterials;
 
 	private Vector3 nextPosition;
 	private Queue<Transform> objectQueue;
@@ -43,6 +45,11 @@ public class PlatformManager : MonoBehaviour {
 		Transform o = objectQueue.Dequeue();
 		o.localScale = scale;
 		o.localPosition = position;
+		
+		int materialIndex = Random.Range(0, materials.Length);
+		o.renderer.material = materials[materialIndex];
+		o.collider.material = physicMaterials[materialIndex];
+		
 		objectQueue.Enqueue(o);
 		
 		nextPosition += new Vector3(
