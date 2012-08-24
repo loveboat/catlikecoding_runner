@@ -14,6 +14,7 @@ public class Runner : MonoBehaviour {
 
 	void Start () {
 		GameEventManager.GameStart += GameStart;
+		GameEventManager.GameOver += GameOver;
 		startPosition = transform.localPosition;
 		gameObject.active = false;
 	}
@@ -48,6 +49,13 @@ public class Runner : MonoBehaviour {
 	private void GameStart () {
 		distanceTraveled = 0f;
 		transform.localPosition = startPosition;
+		rigidbody.isKinematic = false;
 		gameObject.active = true;
+		enabled = true;
+	}
+
+	private void GameOver () {
+		rigidbody.isKinematic = true;
+		enabled = false;
 	}
 }
