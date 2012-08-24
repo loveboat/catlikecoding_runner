@@ -14,6 +14,7 @@ public class Runner : MonoBehaviour {
 		// jump if we're touching the platform
 		if(touchingPlatform && Input.GetButtonDown("Jump")){
 			rigidbody.AddForce(jumpVelocity, ForceMode.VelocityChange);
+			touchingPlatform = false;
 		}
 		transform.Translate(5f * Time.deltaTime, 0f, 0f);
 		
