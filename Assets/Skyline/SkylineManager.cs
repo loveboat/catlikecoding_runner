@@ -10,5 +10,10 @@ public class SkylineManager : MonoBehaviour {
 
 	void Start () {
 		nextPosition = transform.localPosition;
+		for(int i = 0; i < numberOfCubes; i++){
+			Transform o = (Transform)Instantiate(prefab);
+			o.localPosition = nextPosition;
+			nextPosition.x += o.localScale.x;
+		}
 	}
 }
