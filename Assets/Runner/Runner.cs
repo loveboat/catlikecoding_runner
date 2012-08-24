@@ -7,6 +7,7 @@ public class Runner : MonoBehaviour {
 	
 	public float acceleration;
 	public Vector3 jumpVelocity;
+	public float gameOverY;
 
 	private bool touchingPlatform;
 	
@@ -16,9 +17,11 @@ public class Runner : MonoBehaviour {
 			rigidbody.AddForce(jumpVelocity, ForceMode.VelocityChange);
 			touchingPlatform = false;
 		}
-		transform.Translate(5f * Time.deltaTime, 0f, 0f);
-		
 		distanceTraveled = transform.localPosition.x;
+		
+		if (transform.localPosition.y < gameOverY){
+			GameEventManager.TriggerGameOver();
+		}
 	}
 	
 	void FixedUpdate () {
