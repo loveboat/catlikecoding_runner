@@ -10,6 +10,13 @@ public class Runner : MonoBehaviour {
 	public float gameOverY;
 
 	private bool touchingPlatform;
+	private Vector3 startPosition;
+
+	void Start () {
+		GameEventManager.GameStart += GameStart;
+		startPosition = transform.localPosition;
+		gameObject.active = false;
+	}
 	
 	void Update () {
 		// jump if we're touching the platform
@@ -36,5 +43,11 @@ public class Runner : MonoBehaviour {
 
 	void OnCollisionExit () {
 		touchingPlatform = false;
+	}
+	
+	private void GameStart () {
+		distanceTraveled = 0f;
+		transform.localPosition = startPosition;
+		gameObject.active = true;
 	}
 }

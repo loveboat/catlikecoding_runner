@@ -6,6 +6,7 @@ public class GUIManager : MonoBehaviour {
 	
 	void Start () {
 		GameEventManager.GameStart += GameStart;
+		GameEventManager.GameOver += GameOver;
 		gameOverText.enabled = false;
 	}
 
@@ -20,5 +21,11 @@ public class GUIManager : MonoBehaviour {
 		instructionsText.enabled = false;
 		runnerText.enabled = false;
 		enabled = false;
+	}
+	
+	private void GameOver () {
+		gameOverText.enabled = true;
+		instructionsText.enabled = true;
+		enabled = true;
 	}
 }
