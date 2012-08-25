@@ -27,6 +27,11 @@ public class Booster : MonoBehaviour {
 		transform.Rotate(rotationVelocity * Time.deltaTime);
 	}
 	
+	void OnTriggerEnter () {
+		Runner.AddBoost();
+		gameObject.active = false;
+	}
+	
 	private void GameOver () {
 		gameObject.active = false;
 	}
