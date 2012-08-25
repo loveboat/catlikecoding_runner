@@ -10,6 +10,7 @@ public class PlatformManager : MonoBehaviour {
 	public float minY, maxY;
 	public Material[] materials;
 	public PhysicMaterial[] physicMaterials;
+	public Booster booster;
 
 	private Vector3 nextPosition;
 	private Queue<Transform> objectQueue;
